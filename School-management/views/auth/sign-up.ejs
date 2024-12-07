@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+  </head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url("https://img.freepik.com/free-photo/top-view-school-supplies-alarm-clock_23-2148200107.jpg?t=st=1732974989~exp=1732978589~hmac=f3031e8f1a297b3b4b245a62cf977f2d681fbf756d70999ae5de9ef79cb17a6c&w=826");
+      background-size: cover; /* Cover the entire viewport */
+      background-position: center; /* Center the image */
+      background-repeat: no-repeat; /* Do not repeat the image */
+      color: #2b2b2b; /* General text color for readability */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      justify-content: center; /* Center content vertically */
+    }
+
+    /* Navigation Bar */
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 15px;
+      background: rgba(
+        31,
+        31,
+        31,
+        0.8
+      ); /* Dark background with slight transparency */
+      border-bottom: 2px solid #333;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000; /* Ensure it stays above other content */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #e0e0e0; /* Light text color for dark theme */
+      margin: 0 20px;
+      font-size: 1.1em;
+      font-weight: 500;
+      padding: 10px 15px;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #444; /* Slightly lighter dark background on hover */
+      color: #fff; /* White text color on hover */
+    }
+
+    nav a.active {
+      background-color: #333; /* Darker background for active link */
+      color: #fff; /* White text color for active link */
+    }
+
+    /* Container for forms */
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(31, 31, 31, 0.8); /* Slight transparency */
+      padding: 30px;
+      width: 350px; /* Adjust to your preferred width */
+      height: auto; /* Adjust to accommodate form content */
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      margin-top: 80px; /* Ensure space for the fixed nav */
+    }
+
+    /* Heading */
+    h1 {
+      font-size: 48px;
+      color: #fff; /* White for better contrast */
+      text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6); /* Darker shadow for better clarity */
+      margin-bottom: 20px;
+    }
+
+    /* Form Styles */
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    /* Input Fields */
+    label {
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #fff; /* White color for labels */
+    }
+
+    input {
+      margin-bottom: 15px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #2b2b2b;
+      color: #e0e0e0;
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    input:focus {
+      outline: none;
+      border: 1px solid #1e90ff;
+    }
+
+    /* Buttons */
+    button {
+      padding: 10px;
+      background-color: #1e90ff;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin: 10px 0; /* Add margin for spacing between buttons */
+    }
+
+    button:hover {
+      background-color: #0066cc;
+    }
+
+    /* General Text */
+    p {
+      font-size: 1.2em;
+      color: #e0e0e0;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adding light shadow to text */
+    }
+
+    a {
+      font-size: 1.1em;
+      color: #1e90ff;
+      text-decoration: none;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); /* Shadow for links */
+    }
+
+    a:hover {
+      color: #0066cc;
+    }
+
+    /* Centered Content */
+    .center-content {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #fff;
+    }
+  </style>
+  <body>
+    <%- include('../partials/_navbar.ejs')%>
+    <br />
+    <br />
+    <br />
+
+    <h1>Create a new account!</h1>
+    <form action="/auth/sign-up" method="POST">
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="username" />
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" />
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" name="confirmPassword" id="confirmPassword" />
+      <button type="submit">Sign up</button>
+    </form>
+  </body>
+</html>

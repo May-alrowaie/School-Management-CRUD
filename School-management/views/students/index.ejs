@@ -1,0 +1,100 @@
+<!-- views/listings/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Students Records</title>
+  </head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url("https://img.freepik.com/free-photo/top-view-school-supplies-alarm-clock_23-2148200107.jpg?t=st=1732974989~exp=1732978589~hmac=f3031e8f1a297b3b4b245a62cf977f2d681fbf756d70999ae5de9ef79cb17a6c&w=826");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #333333; /* Neutral dark gray for general text */
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 80px; /* Space for any fixed header */
+    }
+
+    /* Styling the Header */
+    h1 {
+      font-size: 36px;
+      color: #ffffff; /* Bright white text for strong contrast */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Subtle dark shadow for depth */
+      margin-bottom: 20px;
+    }
+
+    /* Styling Links */
+    a {
+      text-decoration: none;
+      font-size: 1.1em;
+      font-weight: bold;
+      color: #ffd700; /* Golden yellow for vibrant contrast */
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+
+    a:hover {
+      color: #ffa500; /* Orange-yellow for hover effect */
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); /* Subtle shadow */
+    }
+
+    /* Styling the Unordered List */
+    ul {
+      list-style: none; /* Remove default bullet points */
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      background-color: rgba(
+        0,
+        0,
+        0,
+        0.6
+      ); /* Semi-transparent black for contrast */
+      color: #ffffff; /* Bright white text */
+      border-radius: 8px;
+      padding: 10px 15px;
+      margin: 10px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    }
+
+    /* Styling for List Links */
+    li a {
+      color: #ffd700; /* Golden yellow */
+      font-weight: normal;
+      text-decoration: underline;
+    }
+
+    li a:hover {
+      color: #ffa500; /* Orange-yellow on hover */
+      text-decoration: none;
+    }
+  </style>
+  <body>
+    <%- include('../partials/_navbar.ejs')%>
+    <br />
+    <br />
+    <br />
+
+    <h1>Here's all Your Students Records</h1>
+    <a href="/students/new">Add a New Student Record</a>
+    <ul>
+      <% students.forEach((student)=>{%>
+      <li>
+        A Student in <%= student.school %> <%= student.name%> Created by
+        <%=student.teacher.username%>
+        <a href="/students/<%=student._id%>"> View more details</a>
+      </li>
+      <% }) %>
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= student.name %></title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* A clear, modern font */
+        margin: 0;
+        padding: 0;
+        background-image: url("https://img.freepik.com/free-photo/top-view-school-supplies-alarm-clock_23-2148200107.jpg?t=st=1732974989~exp=1732978589~hmac=f3031e8f1a297b3b4b245a62cf977f2d681fbf756d70999ae5de9ef79cb17a6c&w=826");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: #fff; /* Light text for contrast */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 1); /* Slight shadow for clarity */
+      }
+
+      h1,
+      h2 {
+        font-size: 3em;
+        font-weight: bold;
+        color: #fff; /* Pure white for better visibility */
+        margin-bottom: 15px;
+        text-shadow: 4px 4px 8px rgba(0, 0, 0, 1); /* Stronger shadow */
+        text-align: center;
+      }
+
+      p,
+      label {
+        font-size: 1.5em;
+        color: #f9f9f9; /* Light gray for readability */
+        margin: 10px 0;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 1); /* Stronger shadow for contrast */
+        text-align: center;
+      }
+
+      a.button {
+        display: inline-block; /* Makes it inline and button-like */
+        background-color: #0073e6; /* Blue background */
+        color: #fff; /* White text */
+        font-size: 1.2em; /* Larger text */
+        padding: 12px 25px; /* Spacing around the text */
+        border-radius: 5px; /* Rounded corners */
+        text-decoration: none; /* Removes underline */
+        text-align: center; /* Centers text inside the button */
+        box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5); /* Adds shadow */
+        transition: background-color 0.3s, transform 0.3s; /* Hover effect */
+        margin: 10px auto; /* Centers the button vertically */
+        width: auto; /* Ensures the button takes up only necessary space */
+        max-width: 200px; /* Optional: Restricts button size further if needed */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+      }
+
+      a.button:hover {
+        background-color: #005bb5; /* Darker blue on hover */
+        transform: scale(1.05); /* Slightly enlarges the button on hover */
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7); /* Stronger shadow */
+      }
+
+      form {
+        text-align: center; /* Ensures the button is centered */
+      }
+
+      input[type="text"],
+      input[type="number"],
+      select,
+      input[type="file"] {
+        font-size: 1.2em; /* Larger input text */
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff; /* White background for contrast */
+        color: #333; /* Dark text for better legibility */
+        width: 100%;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background-color: rgba(
+          0,
+          0,
+          0,
+          0.7
+        ); /* Darker background for better text contrast */
+        border-radius: 10px;
+        max-width: 900px;
+        margin: 50px auto; /* Center container horizontally */
+      }
+
+      form {
+        text-align: center; /* Center the form content */
+      }
+
+      .student-list .student-item {
+        background-color: #fff; /* White cards for contrast */
+        color: #333; /* Dark text for readability */
+        font-size: 1.2em;
+        border-radius: 8px;
+        padding: 15px;
+        text-align: center;
+      }
+
+      .student-list .student-item:hover {
+        background-color: #f0f0f0;
+        border-color: #0073e6;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <h1>The Record of <%= student.name%></h1>
+
+    <h2>Details</h2>
+    <p>Age: <%= student.age %> yrs</p>
+    <p>Phone Number: mobile<%= student.phone %></p>
+    <p>School: <%= student.school %></p>
+    <h2>Favorites</h2>
+
+    <p>Favorited by <%= student.favoritedByUsers.length%> people.</p>
+
+    <% if (userHasFavorited) { %>
+    <p>You've favorited this student!</p>
+
+    <form
+      action="/students/<%= student._id %>/favorited-by/<%= user._id %>?_method=DELETE"
+      method="POST"
+    >
+      <button type="submit">UnFavorite it!</button>
+    </form>
+
+    <% } else { %>
+    <p>You haven't favorited this student.</p>
+
+    <form
+      action="/students/<%= student._id %>/favorited-by/<%= user._id %>"
+      method="POST"
+    >
+      <button type="submit">Favorite it!</button>
+    </form>
+
+    <% } %>
+    <h2>Teacher</h2>
+    <% if (student.teacher._id.equals(user._id)) { %>
+    <p>You teach this student!</p>
+    <a class="button" href="/students/<%= student._id %>/edit"
+      >Edit this student</a
+    >
+    <form action="/students/<%= student._id %>?_method=DELETE" method="POST">
+      <br />
+      <button type="submit">Delete this student</button>
+    </form>
+
+    <% } else { %>
+    <p>You don't teach this student, <%= student.teacher.username %> does!</p>
+    <% } %>
+  </body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Homepage</title>
+  </head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url("https://img.freepik.com/free-photo/top-view-school-supplies-alarm-clock_23-2148200107.jpg?t=st=1732974989~exp=1732978589~hmac=f3031e8f1a297b3b4b245a62cf977f2d681fbf756d70999ae5de9ef79cb17a6c&w=826");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #e0e0e0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Navigation Bar */
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 15px;
+      background: rgba(31, 31, 31, 0.8); /* Darker background for the nav bar */
+      border-bottom: 2px solid #333;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #e0e0e0; /* Light text color for links */
+      margin: 0 20px;
+      font-size: 1em;
+      font-weight: 500;
+      padding: 10px 15px;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #3d3d3d; /* Slightly lighter background on hover */
+      color: #fff; /* White text color on hover */
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-top: 100px; /* Space for the fixed nav */
+    }
+
+    h1 {
+      font-size: 48px;
+      color: white; /* Inner text color (stands out on the background) */
+      text-shadow: 2px 2px 0 #d9a799,
+        /* Soft peach-gray outline */ -2px 2px 0 #d9a799, 2px -2px 0 #d9a799,
+        -2px -2px 0 #d9a799, 0 2px 0 #d9a799, 2px 0 0 #d9a799, 0 -2px 0 #d9a799,
+        -2px 0 0 #d9a799;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #080202;
+    }
+    p {
+      color: #2b0505;
+    }
+  </style>
+
+  <body>
+    <%- include('./partials/_navbar.ejs') %>
+    <br />
+    <br />
+
+    <br />
+    <br />
+
+    <h1>Welcome to the School Management System</h1>
+
+    <h2>Welcome to the app, Teachers!!.</h2>
+    <p>where all your students records are one click away!</p>
+  </body>
+</html>
