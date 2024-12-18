@@ -12,7 +12,7 @@ const isSignedIn = require("./middleware/is-signed-in")
 const passUserToView = require("./middleware/pass-user-to-view")
 
 // Set the port from environment variable or default to 3000
-const port = process.env.PORT ? process.env.PORT : "3001"
+const port = process.env.PORT ? process.env.PORT : "3003"
 
 mongoose.connect(process.env.MONGODB_URI)
 
